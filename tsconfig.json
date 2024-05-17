@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "strict": true,
+    "noLib": false,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "strictFunctionTypes": false,
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "allowJs": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "experimentalDecorators": true,
+    "lib": ["dom", "esnext"],
+    "noImplicitAny": false,
+    "skipLibCheck": true,
+    "removeComments": true,
+    "paths": {
+      "#/*": ["typings/*"],
+      "@/*": ["src/*"]
+    },
+    "types": [
+      "@types/node",
+      "mini-types",
+      "vite/client",
+      "@dcloudio/types",
+      "miniprogram-api-typings",
+      "unplugin-vue-define-options"
+    ]
+  },
+  "exclude": ["build", "dist", "scripts", "jest", "node_modules", "**/*.js"],
+  "include": [
+    "@dcloudio/types",
+    "typings/**/*",
+    "./src/**/*.ts",
+    "./src/**/*.d.ts",
+    "./src/**/*.vue",
+    "./src/**/*.ext",
+    "./*.ts"
+  ]
+}

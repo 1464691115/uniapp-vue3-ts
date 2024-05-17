@@ -1,0 +1,32 @@
+.line {
+  width: 100%;
+  height: 20rpx;
+  background-color: #f4f4f4;
+}
+
+.message-red {
+  @include messageRed;
+}
+
+.place-wrap {
+  min-width: 100vw;
+  height: 1px;
+}
+
+// 主题色 （字体）
+.font-primary {
+  color: $primary;
+}
+
+.loading-animation {
+  animation: loading forwards infinite ease-in-out 1s;
+  transform-origin: center center;
+}
+
+view.uni-popup {
+  z-index: 999;
+}
+
+.u-transition {
+  width: 100%;
+}
