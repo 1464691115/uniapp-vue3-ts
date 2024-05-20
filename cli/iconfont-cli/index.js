@@ -27,26 +27,51 @@ function setVueIconfont() {
             __dirname,
             '../../src/components/Basic/Icon',
           )
-          fs.writeFile(icfsPath + '/src/icon-font.scss', rawData, {}, function (err) {
-            if (err) throw new Error('❌ icon-font.scss 文件编译失败,\n' + err.message)
-            console.log('✅ icon-font.scss 文件编译完成')
+
+
+          const templateScssPath = path.resolve(
+            __dirname,
+            './templates/iconfont.scss.template',
+          )
+
+          let projectId;
+          rawData.replace(/Project id (\d+)/g, (_, $1) => {
+            projectId = $1
           })
 
-          const templatePath = path.resolve(
+          fs.readFile(templateScssPath, {}, function (err, data) {
+            if (err) throw err;
+
+            let entryItem = []
+
+            rawData.replace(/url.*/g, (_) => {
+              entryItem += `\n       ${_}`
+            })
+
+            let resultTxt = data.toString('utf8')
+              .replace(/\#projectId\#/g, (_) => projectId)
+              .replace(/\#FONT_SRC\#/g, (_) => entryItem)
+
+            fs.writeFile(icfsPath + '/src/icon-font.scss', resultTxt, {}, function (err) {
+              if (err) throw new Error('❌ icon-font.scss 文件编译失败,\n' + err.message)
+              console.log('✅ icon-font.scss 文件编译完成')
+            })
+          })
+
+
+
+          const templateIndexPath = path.resolve(
             __dirname,
             './templates/index.ts.template',
           )
 
-          fs.readFile(templatePath, {}, function (err, data) {
+          fs.readFile(templateIndexPath, {}, function (err, data) {
             if (err) throw err;
 
-            let entryItem = '',
-              projectId = ''
-            rawData.replace(/Project id (\d+)/g, (_, $1) => {
-              projectId = $1
-            })
+            let entryItem = ''
+
             rawData.replace(/.icon\-([\w-]+):before\s\{\n\s+content: "(.*)"/g, (_, $1, $2) => {
-              entryItem += `\n  ${$1.toUpperCase().split('-').join('_')} = "icon-${$1}",`
+              entryItem += `\n  ${$1.toUpperCase().split('-').join('_')} = "&#x${$2}",`
             })
 
             let resultTxt = data.toString('utf8')
