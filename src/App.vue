@@ -35,6 +35,7 @@ const { VITE_GLOB_FONT_URL } = getAppEnvConfig()
 @import '@/static/style/class.scss';
 @import '@/static/style/style.scss';
 @import '@/components/Basic/Icon/src/icon-font.scss';
+@import '@/components/Basic/IconColor/src/icon-color.scss';
 
 view {
   box-sizing: border-box;

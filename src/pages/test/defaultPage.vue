@@ -1,9 +1,12 @@
 <template>
   <view class="virtualized-list">
-    <BasicForm @register="register"></BasicForm>
+    <!-- <BasicForm @register="register"></BasicForm> -->
+    <IconColor :icon="ICON_COLOR_UNICODE.COLORQUESHENGYE_QINGDENGDAI" />
   </view>
 </template>
 <script lang="ts" setup>
+import { ICON_COLOR_UNICODE } from '@/components/Basic/IconColor';
+import IconColor from '@/components/Basic/IconColor/src/IconColor.vue';
 import { ComponentOptions, useForm } from '@/components/Basic/Form'
 import BasicForm from '@/components/Basic/Form/src/BasicForm.vue'
 import { onMounted } from 'vue'

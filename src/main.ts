@@ -3,7 +3,8 @@ import App from './App.vue'
 import { setupStore } from '@/store'
 import globalUtil from '@/utils/global/plugin'
 import globalIcon from '@/components/Basic/Icon'
-import NavBarCustom from './components/NavBarCustom'
+import globalIconColor from '@/components/Basic/IconColor'
+import NavBarCustom from '@/components/NavBarCustom'
 
 export function createApp() {
   const app = createSSRApp(App)
@@ -17,6 +18,9 @@ export function createApp() {
 
   // 图标枚举
   app.use(globalIcon)
+
+  // 彩色图标枚举
+  app.use(globalIconColor)
 
   // 全局顶部弹框
   app.use(NavBarCustom)
