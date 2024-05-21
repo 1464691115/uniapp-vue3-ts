@@ -11,7 +11,7 @@ export default function <A>(props: { api: (...arg) => Promise<Result<A>>, immedi
     })
 
     function reload() {
-        props.api?.().then(res => {
+        return props.api?.().then(res => {
             result.value = res.data
         })
     }

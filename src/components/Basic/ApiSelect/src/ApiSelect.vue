@@ -6,6 +6,7 @@
       :range="options"
       :value="index == -1 ? 0 : index"
       range-key="label"
+      v-bind="$attrs"
       @change="bindTimeChange"
     >
       <view class="con-wrap" />
