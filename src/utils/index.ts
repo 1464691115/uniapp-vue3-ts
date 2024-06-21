@@ -56,12 +56,13 @@ export function chooseImage(
 }
 
 /** get请求 参数转换 */
-export function queryParamsStr(_data = {}) {
+export function queryParamsStr(_data = {}, setting) {
+  const { prefix = '?', join = '&' } = setting
   return (
-    '?' +
+    prefix +
     Object.keys(_data)
       .reduce<string[]>((pre, cur) => pre.concat([`${cur}=${_data[cur]}`]), [])
-      .join('&')
+      .join(join)
   )
 }
 
